@@ -18,12 +18,29 @@ const Activities = () => {
 
   return (
     <div>
-      <h2>Activities</h2>
-      <ul>
-        {activities.map((activity, idx) => (
-          <li key={idx}>{activity.activity_type} - {activity.duration} min - {activity.calories_burned} cal</li>
-        ))}
-      </ul>
+      <h2 className="mb-4">Activities</h2>
+      <div className="card">
+        <div className="card-body">
+          <table className="table table-striped table-hover">
+            <thead className="table-primary">
+              <tr>
+                <th>Type</th>
+                <th>Duration (min)</th>
+                <th>Calories Burned</th>
+              </tr>
+            </thead>
+            <tbody>
+              {activities.map((activity, idx) => (
+                <tr key={idx}>
+                  <td>{activity.activity_type}</td>
+                  <td>{activity.duration}</td>
+                  <td>{activity.calories_burned}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
