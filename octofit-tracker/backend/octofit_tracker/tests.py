@@ -9,8 +9,12 @@ class UserModelTest(TestCase):
 
 class TeamModelTest(TestCase):
     def test_create_team(self):
+        user1 = User.objects.create(username='user1', email='user1@example.com')
+        user2 = User.objects.create(username='user2', email='user2@example.com')
         team = Team.objects.create(name='Test Team')
+        team.members.set([user1, user2])
         self.assertEqual(team.name, 'Test Team')
+        self.assertEqual(team.members.count(), 2)
 
 class ActivityModelTest(TestCase):
     def test_create_activity(self):
